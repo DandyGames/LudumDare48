@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bo coso di dandy.mp3-995663fe997dbf582dcb030d6065d6b8.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/bo coso di dandy.mp3"
+dest_files=[ "res://.import/bo coso di dandy.mp3-995663fe997dbf582dcb030d6065d6b8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
