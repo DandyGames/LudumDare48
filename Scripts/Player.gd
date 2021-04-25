@@ -14,16 +14,16 @@ func _ready():
 	AnimIdleRight()
 func AnimIdleRight():
 	$AnimatedSprite.flip_h = false
-	$AnimatedSprite.play('idle')
+	$AnimatedSprite.play('p1_idle')
 	
 func AnimIdleLeft():
 	$AnimatedSprite.flip_h = true
-	$AnimatedSprite.play('idle')
+	$AnimatedSprite.play('p1_idle')
 	
 func AnimWalkRight():
 	$AnimatedSprite.flip_h = false
-	$AnimatedSprite.play('walkright')
+	$AnimatedSprite.play('p1_walkright')
 	
 func AnimWalkLeft():
-	$AnimatedSprite.flip_h = true
-	$AnimatedSprite.play('walkright')
+	$AnimatedSprite.flip_h = false
+	$AnimatedSprite.play('p1_walkleft')

@@ -6,21 +6,22 @@
 [ext_resource path="res://Scenes/UI/F_SmallFont.tres" type="DynamicFont" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 37.9628
-height = 151.356
+radius = 68.2662
+height = 124.137
 
 [node name="RigidBody2D" type="RigidBody2D"]
 mode = 2
 script = ExtResource( 2 )
 anims = ExtResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = ExtResource( 1 )
-animation = "idle"
-playing = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "p1_idle"
+frame = 1
+playing = true
 
 [node name="Name" parent="." instance=ExtResource( 3 )]
 margin_top = -96.0
