@@ -9,4 +9,5 @@ func _on_ButtonQuit_pressed():
 	get_tree().quit()
 
 func _on_ButtonResume_pressed():
+	get_parent().get_parent().canpause = true
 	get_parent().queue_free()

@@ -12,9 +12,12 @@ config_version=4
 
 config/name="Ludum Dare 48"
 run/main_scene="res://Scenes/Menu/MainMenu.tscn"
-run/disable_stdout=true
-run/disable_stderr=true
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
 
 [input]
 
