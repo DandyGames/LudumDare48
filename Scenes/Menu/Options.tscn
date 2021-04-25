@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/UI/Label.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI/Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/UIGrid.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/UI/F_MediumFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scripts/Options.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/UI/F_SmallFont.tres" type="DynamicFont" id=6]
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -265.0
+margin_bottom = -100.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" parent="GridContainer" instance=ExtResource( 1 )]
+margin_right = 247.0
+margin_bottom = 62.0
+text = "Placeholder"
+customfont = ExtResource( 4 )
+
+[node name="Label2" parent="GridContainer" instance=ExtResource( 1 )]
+margin_top = 66.0
+margin_right = 247.0
+margin_bottom = 128.0
+text = "Placeholder"
+customfont = ExtResource( 6 )
+
+[node name="ButtonBack" parent="GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 132.0
+margin_right = 247.0
+margin_bottom = 200.0
+text = "Back"
+
+[connection signal="pressed" from="GridContainer/ButtonBack" to="." method="_on_ButtonBack_pressed"]

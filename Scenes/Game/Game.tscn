@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/UI/Label.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI/F_MediumFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Game/PauseMenu.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends GridContainer
+func _ready():
+	self.set_position(Vector2(self.rect_size.x/-2, self.rect_size.y/-2))
+"
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+PauseMenu = ExtResource( 4 )
+
+[node name="Interface" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -321.0
+margin_bottom = -238.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" parent="Interface" instance=ExtResource( 1 )]
+margin_right = 191.0
+margin_bottom = 62.0
+text = "Press Esc"
+customfont = ExtResource( 2 )
