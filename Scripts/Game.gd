@@ -23,18 +23,8 @@ func MovPlayers(delta):
 	get_node("Player1").apply_impulse(Vector2(0,0),p1_mov*speed)#move_and_collide(p1_mov*speed)
 	
 func HandlePlayerInput():
-	if p0_mov.x > 0:
-		$Player0.AnimIdleRight()
-	else:
-		$Player0.AnimIdleLeft()
-	if p1_mov.x > 0:
-		$Player1.AnimIdleRight()
-	else:
-		$Player1.AnimIdleLeft()
-		
 	p0_mov = Vector2(0, 0)
 	p1_mov = Vector2(0, 0)
-	
 	if Input.is_action_pressed("p0_right"):
 		p0_mov += Vector2(1, 0)
 		$Player0.AnimWalkRight()
