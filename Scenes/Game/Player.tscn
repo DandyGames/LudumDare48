@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Images/Sprites/PlayerSprite.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/Label.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/F_SmallFont.tres" type="DynamicFont" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.9969, 31.983 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 25.6145
+height = 10.2801
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="RigidBody2D" type="RigidBody2D"]
+mode = 2
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
@@ -13,3 +19,11 @@ animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Name" parent="." instance=ExtResource( 3 )]
+margin_top = -96.0
+margin_bottom = -15.0
+text = "ID"
+valign = 0
+customfont = ExtResource( 4 )
+offset = Vector2( 0, -60 )

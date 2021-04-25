@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Game/PauseMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI/Label.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sounds/Music/livello 1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Game/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/UI/F_MediumFont.tres" type="DynamicFont" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends GridContainer
+func _ready():
+	self.set_position(Vector2(self.rect_size.x/-2, self.rect_size.y/-2))
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 6.03308 )
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+PauseMenu = ExtResource( 1 )
+PlayerBaseSpeed = 300
+LevelBGM = ExtResource( 3 )
+
+[node name="Interface" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -171.0
+margin_bottom = -108.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" parent="Interface" instance=ExtResource( 2 )]
+margin_right = 341.0
+margin_bottom = 192.0
+text = "Player 1: WASD
+Player 2: Arrows
+Pause Menu: Esc"
+customfont = ExtResource( 6 )
+
+[node name="Player0" parent="." instance=ExtResource( 4 )]
+position = Vector2( 336.026, 84.8724 )
+
+[node name="Player1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 751.096, 93.7039 )
+IsPlayer0 = false
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="Sprite" type="StaticBody2D" parent="."]
+position = Vector2( 470.962, 508.966 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite"]
+position = Vector2( -2.37439, 84.4217 )
+scale = Vector2( 100, 1 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite"]
+position = Vector2( 15.4597, -505.413 )
+scale = Vector2( 100, 1 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite"]
+position = Vector2( -463.518, -34.7231 )
+rotation = 1.56031
+scale = Vector2( 100, 1 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite"]
+position = Vector2( 550.836, -67.6859 )
+rotation = 1.56031
+scale = Vector2( 100, 1 )
+shape = SubResource( 2 )
