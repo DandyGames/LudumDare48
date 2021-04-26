@@ -1,6 +1,6 @@
 extends Node2D
 export (PackedScene) var PauseMenu
-export var PlayerBaseSpeed = 60
+var PlayerBaseSpeed = 500
 export var LevelID = 0
 export (AudioStream) var LevelBGM
 var canpause = true
