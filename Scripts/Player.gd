@@ -1,49 +1,63 @@
 extends RigidBody2D
 export var IsPlayer0 = true
 export (SpriteFrames) var anims
-export var health = 100
-export var water = 100
-export var stamina = 100
-export var matches = 5
+var health = 50
+var water = 50
+var stamina = 50
+var matches = 5
 var IsIdle = true
 var IsWalk = false
-var IsFalling = false
+var IsOnGround = true
 var IsFacingRight = true
 var alive = true
 var id = "Player 1"
+var collectable
+
 func _ready():
 	if !IsPlayer0:
 		id = "Player 2"
 	get_node("Name").text = id
-	AnimIdleRight()
-func AnimIdleRight():
-	if !IsIdle:
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play('p1_idle')
+	get_node("AnimatedSprite").frames = anims
+	
+func AnimIdle():
+	if !IsIdle and IsWalk:
+		$AnimatedSprite.flip_h = !IsFacingRight
+		$AnimatedSprite.play('idle')
 		IsIdle = true
 		IsWalk = false
 		IsFacingRight = true
 	
-func AnimIdleLeft():
-	if !IsIdle:
-		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.play('p1_idle')
-		IsIdle= true
-		IsWalk = false
-		IsFacingRight = false
-	
 func AnimWalkRight():
-	if !IsWalk:
+	if !IsWalk and IsIdle:
 		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play('p1_walkright')
+		$AnimatedSprite.play('walkright')
 		IsWalk = true
 		IsIdle= false
 		IsFacingRight = true
 	
 func AnimWalkLeft():
-	if !IsWalk:
+	if !IsWalk and IsIdle:
 		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play('p1_walkleft')
+		$AnimatedSprite.play('walkleft')
 		IsWalk = true
 		IsIdle= false
 		IsFacingRight = false
+
+func Jump():
+	pass
+
+func Ray():
+	IsOnGround = $BottomRayCastL.is_colliding() or $BottomRayCastR.is_colliding()
+	if $BottomRayCastL.is_colliding():
+		pass
+
+func Interaction(collectable):
+		if collectable.name == "Apple":
+			print("It's an apple!")
+			collectable.free()
+
+func Interact():
+	if $RightRayCast.is_colliding():
+		Interaction($RightRayCast.get_collider())
+	if $LeftRayCast.is_colliding():
+		Interaction($LeftRayCast.get_collider())
