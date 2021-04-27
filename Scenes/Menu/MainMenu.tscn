@@ -16,6 +16,7 @@ __meta__ = {
 [node name="Title" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.5
 anchor_right = 0.5
+text = "Let's get to the core!"
 
 [node name="MenuGrid" type="GridContainer" parent="."]
 anchor_left = 0.5

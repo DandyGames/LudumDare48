@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Game/PauseMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI/Label.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sounds/Music/livello 1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Game/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/UI/F_MediumFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Images/Tiles/Tileset.tres" type="TileSet" id=7]
+[ext_resource path="res://Images/Sprites/Player2Sprite.tres" type="SpriteFrames" id=8]
+[ext_resource path="res://Scenes/Game/Collectable.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Game/GameOver.tscn" type="PackedScene" id=33]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 5 )
+PauseMenu = ExtResource( 1 )
+GameOver = ExtResource( 33 )
+LevelID = 1
+LevelBGM = ExtResource( 3 )
+
+[node name="Hint" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 683.356
+margin_top = 126.986
+margin_right = 879.356
+margin_bottom = 318.986
+text = "There are
+no more
+ levels!"
+script = null
+
+[node name="Player0" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192.754, 444.337 )
+
+[node name="Player1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1329.82, 440.762 )
+IsPlayer0 = false
+anims = ExtResource( 8 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -327692, 7, 0, -327686, 7, 0, -393216, 7, 0, -393210, 7, 0, -393204, 7, 0, -393198, 7, 0, -393192, 7, 0, -393186, 7, 0, -131084, 7, 0, -196578, 7, 0, 65524, 7, 0, 30, 7, 0, 262134, 7, 0, 196636, 7, 0, 458744, 7, 0, 393242, 7, 0, 655354, 7, 0, 589824, 7, 0, 589830, 7, 0, 589836, 7, 0, 589842, 7, 0, 589848, 7, 0 )
+
+[node name="View" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="View"]
+current = true
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+
+[node name="UI_Player0" parent="View" instance=ExtResource( 2 )]
+margin_left = -615.0
+margin_top = -335.0
+margin_right = -311.0
+margin_bottom = -78.0
+text = "Health: 100%
+Water: 100%
+Food: 100%
+Matches: 5"
+align = 0
+valign = 0
+customfont = ExtResource( 6 )
+reposition = false
+
+[node name="UI_Player1" parent="View" instance=ExtResource( 2 )]
+margin_left = 311.0
+margin_top = -335.0
+margin_right = 615.0
+margin_bottom = -78.0
+rect_pivot_offset = Vector2( 304, 0 )
+text = "Health: 100%
+Stamina: 100%
+Water: 100%
+Matches: 5"
+align = 2
+valign = 0
+customfont = ExtResource( 6 )
+reposition = false
+
+[node name="SceneObjects" type="Node" parent="."]
+
+[node name="NextLevel" type="Node" parent="SceneObjects"]
+
+[node name="NextLevel" parent="SceneObjects/NextLevel" instance=ExtResource( 9 )]
+position = Vector2( 761.417, 523.414 )
+CustomName = "End"
+
+[node name="Label" parent="SceneObjects/NextLevel/NextLevel" instance=ExtResource( 2 )]
+margin_left = 1.0
+margin_top = 12.0
+margin_right = 190.0
+margin_bottom = 74.0
+text = "Continue"
+offset = Vector2( 0, -100 )

@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Ludum Dare 48"
+config/name="Let's get to the core!"
 run/main_scene="res://Scenes/Menu/MainMenu.tscn"
 config/icon="res://icon.png"
 

@@ -1,5 +1,6 @@
 extends Node2D
 export (PackedScene) var PauseMenu
+export (PackedScene) var GameOver
 var PlayerBaseSpeed = 500
 export var LevelID = 0
 export (AudioStream) var LevelBGM
@@ -16,7 +17,7 @@ func GeneralInput():
 	if Input.is_action_pressed("ui_cancel") and canpause:
 		canpause = false
 		var pausemenu = PauseMenu.instance()
-		get_node("HUD").add_child(pausemenu)
+		get_node("View").add_child(pausemenu)
 	
 func MovPlayers(delta):
 	var speed = delta*PlayerBaseSpeed
@@ -41,7 +42,7 @@ func HandlePlayerInput():
 		p0_mov += Vector2(-1, 0)
 		$Player0.AnimWalkLeft()
 	if Input.is_action_pressed("p0_up") and $Player0.IsOnGround:
-		p0_mov += Vector2(0, -5)
+		p0_mov += Vector2(0, -45)
 		$Player0.Jump()
 	if Input.is_action_pressed("p1_right"):
 		p1_mov += Vector2(1, 0)
@@ -52,7 +53,7 @@ func HandlePlayerInput():
 		p1_mov += Vector2(-1, 0)
 		$Player1.AnimWalkLeft()
 	if Input.is_action_pressed("p1_up") and $Player1.IsOnGround:
-		p1_mov += Vector2(0, -5)
+		p1_mov += Vector2(0, -45)
 		$Player1.Jump()
 		
 func NextLevel():
@@ -62,13 +63,25 @@ func NextLevel():
 	
 func UpdateCamera():
 	NewCameraPosition = ($Player0.position + $Player1.position)/2
-	CameraZoom =pow((($Player0.position - $Player1.position)*Vector2(1,5)).length()/1000,1/3)
-	#$Camera2D.position = newposition
-	get_node("Camera2D").position = NewCameraPosition
-	get_node("Camera2D").zoom = Vector2(CameraZoom, CameraZoom)
+	CameraZoom = max(0.9,(($Player0.position - $Player1.position)*Vector2(1,1.777)).length()/1000)
+	get_node("View").scale = Vector2(CameraZoom, CameraZoom)
+	get_node("View").position = NewCameraPosition
+	get_node("View/Camera2D").zoom = Vector2(CameraZoom, CameraZoom)
+
+func UpdatePlayer(delta):
+	var water = -0.5*delta
+	var food = -0.25*delta
+	$Player0.Update(0,water,food,0)
+	$Player1.Update(0,water,food,0)
+	if $Player0.health <= 0 or $Player1.health <= 0:
+		var gameover = GameOver.instance()
+		get_node("View").add_child(gameover)
+		canpause = false
 	
 func _process(delta):
-	GeneralInput()
-	HandlePlayerInput()
-	MovPlayers(delta)
-	UpdateCamera()
+	if canpause:
+		GeneralInput()
+		HandlePlayerInput()
+		MovPlayers(delta)
+		UpdateCamera()
+		UpdatePlayer(delta)

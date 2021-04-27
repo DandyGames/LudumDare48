@@ -18,45 +18,51 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = -379.0
-margin_bottom = 32.0
+margin_left = -640.0
+margin_top = -360.0
+margin_right = -166.0
+margin_bottom = 38.0
 rect_clip_content = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dandy" parent="AboutUs" instance=ExtResource( 1 )]
-margin_right = 336.0
+[node name="Title" parent="AboutUs" instance=ExtResource( 1 )]
+margin_right = 906.0
 margin_bottom = 62.0
-text = "Dandy: Menu"
+text = "About Us"
+
+[node name="Dandy" parent="AboutUs" instance=ExtResource( 1 )]
+margin_top = 66.0
+margin_right = 906.0
+margin_bottom = 128.0
+text = "Dandy: Making and Managing of the  Project"
 
 [node name="Max" parent="AboutUs" instance=ExtResource( 1 )]
-margin_top = 66.0
-margin_right = 336.0
-margin_bottom = 128.0
-text = "Max: Ideas? Kek"
+margin_top = 132.0
+margin_right = 906.0
+margin_bottom = 194.0
+text = "Max the Wolf: Giving Ideas for the theme"
 
 [node name="Tsu" parent="AboutUs" instance=ExtResource( 1 )]
-margin_top = 132.0
-margin_right = 336.0
-margin_bottom = 194.0
-text = "Tsu: Music"
+margin_top = 198.0
+margin_right = 906.0
+margin_bottom = 260.0
+text = "Tsundere Boy: Producing the Music"
 
 [node name="Emme" parent="AboutUs" instance=ExtResource( 1 )]
-margin_top = 198.0
-margin_right = 336.0
-margin_bottom = 260.0
-text = "Emme: Graphics"
+margin_top = 264.0
+margin_right = 906.0
+margin_bottom = 326.0
+text = "Emme Gray: Making of the Sprites"
 
 [node name="ButtonBack" parent="AboutUs" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 264.0
-margin_right = 336.0
-margin_bottom = 332.0
+margin_top = 330.0
+margin_right = 906.0
+margin_bottom = 398.0
 text = "Back"
 
 [connection signal="pressed" from="AboutUs/ButtonBack" to="." method="_on_ButtonBack_pressed"]

@@ -11,7 +11,8 @@ height = 124.137
 
 [node name="RigidBody2D" type="RigidBody2D"]
 mode = 2
-gravity_scale = 2.0
+mass = 1.25
+gravity_scale = 0.5
 script = ExtResource( 2 )
 anims = ExtResource( 1 )
 
@@ -57,7 +58,7 @@ __meta__ = {
 [node name="RightRayCast" type="RayCast2D" parent="."]
 position = Vector2( 60, 75 )
 enabled = true
-cast_to = Vector2( 50, 0 )
+cast_to = Vector2( 75, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -65,7 +66,7 @@ __meta__ = {
 [node name="LeftRayCast" type="RayCast2D" parent="."]
 position = Vector2( -60, 75 )
 enabled = true
-cast_to = Vector2( -50, 0 )
+cast_to = Vector2( -75, 0 )
 __meta__ = {
 "_edit_lock_": true
 }

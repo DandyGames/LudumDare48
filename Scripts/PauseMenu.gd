@@ -10,4 +10,8 @@ func _on_ButtonQuit_pressed():
 
 func _on_ButtonResume_pressed():
 	get_parent().get_parent().canpause = true
-	get_parent().queue_free()
+	self.queue_free()
+
+
+func _on_Control_pressed():
+	get_tree().change_scene("res://Scenes/Game/Level0.tscn")
